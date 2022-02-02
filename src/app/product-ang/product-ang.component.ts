@@ -7,17 +7,19 @@ import { Iproducts, DiscountOffers,ICategory } from '../shared-class&types/Iprod
   styleUrls: ['./product-ang.component.scss']
 })
 export class ProductAngComponent implements OnInit {
-  
+  //public Discount:boolean
   Discount:DiscountOffers;
   StoreName:string;
   StoreLogo:string;
- 
   ProductList:Iproducts[];
   CategoryList:ICategory[];
   ClientName:string;
   Ipurshased:boolean;
+  check :boolean;
+
   constructor() {
-    this.Discount=DiscountOffers.gDis;
+    //this.Discount= true;
+   this.Discount=DiscountOffers.gDis;
     this.StoreName ='Moana';
     this.StoreLogo ="../../assets/images/logo.jpg";
     this.ProductList=[{
@@ -25,26 +27,37 @@ export class ProductAngComponent implements OnInit {
       Name:'Coffee',
       Quantity :100,
       Price : 30,
-      Img:'coffee.'
+      Img:'../../assets/images/coffee.jpg'
     },{
        Id:2,
       Name:'Pepsi',
       Quantity :200,
       Price : 15,
-      Img:'pepsi.'
+      Img:'../../assets/images/pepsi.jpg'
     },{
       Id:3,
       Name:'Tea',
       Quantity :75,
       Price : 10,
-      Img:'tea.'
+      Img:'../../assets/images/tea.jpg'
     } ];
     this.CategoryList=[{Id:1, Name : 'hot'},{Id:2 ,Name : 'cold'}];
     this.ClientName='Menna-Allah';
-    this.Ipurshased=true
+    this.Ipurshased=true;
+    this.check = true;
    }
 
   ngOnInit(): void {
   }
 
+  BuyBtn()
+  {
+    if(this.Ipurshased){
+      this.Ipurshased = false;
+     }
+    else 
+    {
+      this.Ipurshased = true;
+    }
+  }
 }

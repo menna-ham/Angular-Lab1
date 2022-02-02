@@ -11,4 +11,4 @@ export interface Iproducts {
     Name:string
   }
   
-  export enum DiscountOffers {noDis = "No Discount" , sDis =  "10%" , gDis =  "15%"};
+  export enum DiscountOffers {noDis = "No Discount" , sDis =  "10" , gDis =  "15"};

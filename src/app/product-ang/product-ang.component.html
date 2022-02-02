@@ -1,8 +1,78 @@
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem; margin: 10px 40%; ">
     <img [src]="StoreLogo" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h1 class="card-title">{{StoreName}}</h1>
-      <h5>We offer an explicit discount of : {{Discount}}</h5>      
+    <div class="card-body"> 
+      <h1 class="card-title">{{StoreName|uppercase}}</h1>
+
+      <div *ngIf="Discount=='No Discount' ; then emp ; else dis"></div>
+
+      <ng-template #dis>
+      <h5>We offer an explicit discount of : {{Discount|percent}}</h5>
+      </ng-template> 
+
+      <ng-template #emp>
+        <p></p>
+      </ng-template>    
     </div>
   </div>
+<!------------------------------------------------------------------------------------------> 
+  
+  <br> <br>
+  <select  >
+    <option *ngFor=" let item of CategoryList">
+      {{item.Name}}
+    </option>
+  </select>
+
+<!-- ------------------------------------------------------------- -->
+  <div *ngIf="this.Ipurshased ; then tbl ; else thx"></div>
+  <br> <br>
+  <ng-template #tbl>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td *ngFor=" let item of ProductList"> {{item.Name}}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td *ngFor=" let item of ProductList"> {{item.Quantity}}</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td *ngFor=" let item of ProductList"> {{item.Price}}</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td *ngFor=" let item of ProductList"><img [src]="item.Img"></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+
+<ng-template #thx>
+  <div>
+    Thanks for purchasing from our Store {{ClientName}}
+  </div>
+</ng-template><br> <br>
+
+<button type="button" class="btn btn-primary"  (click)="BuyBtn()">Buy</button>
+<!-- ---------------------------------------------------------------------- -->
+
+  <br> <br>
+ <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" class="col-3"
+    [(ngModel)]="ClientName">
+    {{ClientName}}
+  </div>
+
+  <br><br>
+  
