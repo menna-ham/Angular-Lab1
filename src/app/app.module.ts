@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderAngComponent } from './header-ang/header-ang.component';
@@ -9,7 +8,10 @@ import { ProductAngComponent } from './product-ang/product-ang.component';
 import { FormsModule } from '@angular/forms';
 import { ParentComponent } from './component interaction/parent/parent.component';
 import { ChildComponent } from './component interaction/child/child.component';
-
+import { HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { PostsComponent } from './posts/posts.component';
+import { UsersComponent } from './users/users.component'
 
 @NgModule({
   declarations: [
@@ -18,12 +20,16 @@ import { ChildComponent } from './component interaction/child/child.component';
     FooterAngComponent,
     ProductAngComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    HomeComponent,
+    PostsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

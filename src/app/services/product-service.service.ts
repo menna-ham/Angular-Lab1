@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Iproducts} from '../shared-class&types/Iproducts'
+import {Iproducts} from '../shared-class&types/Iproducts';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
+  [x: string]: any;
   allProds:Iproducts[];
 
-  constructor() { 
+  constructor( private http:HttpClient) { 
     this.allProds=[
       {
         Id: 1,
@@ -30,10 +32,14 @@ export class ProductServiceService {
       }
     ]
   }
+  _url:any='./assets/Data/products.json'
 
   GetAllProducts(){
-    return this.allProds;
+    //return this.allProds;
+    return this.http.get(this._url)
+    
   }
+
 
   GetProductById(prdId: number)
   {
@@ -51,5 +57,7 @@ export class ProductServiceService {
       return "the Product you want is not exist "
     }
   }
+  
 }
-exports = {ProductServiceService}
+  
+

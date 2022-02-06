@@ -1,0 +1,21 @@
+[
+    {
+      "Id": 1,
+      "Name":"Coffee",
+      "Quantity":100,
+      "Price": 30,
+      "Img":"../../assets/images/coffee.jpg"
+    },{
+       "Id":2,
+      "Name":"Pepsi",
+      "Quantity":200,
+      "Price": 15,
+      "Img":"../../assets/images/pepsi.jpg"
+    },{
+      "Id":3,
+      "Name":"Tea",
+      "Quantity" :75,
+      "Price" : 10,
+      "Img":"../../assets/images/tea.jpg"
+    }
+  ]

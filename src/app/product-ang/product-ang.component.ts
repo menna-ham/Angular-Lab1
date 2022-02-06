@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Iproducts, DiscountOffers,ICategory } from '../shared-class&types/Iproducts';
-import{ProductServiceService} from '../services/product-service.service'
+import{ProductService} from '../services/product-service.service'
 
 @Component({
   selector: 'app-product-ang',
@@ -18,9 +18,9 @@ export class ProductAngComponent implements OnInit {
   Ipurshased:boolean;
   check :boolean;
   allprods: any;
-  ProductService: ProductServiceService = new ProductServiceService;
+  //ProductService: ProductService = new ProductService;
 
-  constructor() {
+  constructor(private ProductService:ProductService) {
     //this.Discount= true;
    this.Discount=DiscountOffers.gDis;
     this.StoreName ='Moana';
@@ -51,6 +51,7 @@ export class ProductAngComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.allprods= this.ProductService.GetAllProducts()
   }
 
   BuyBtn()
