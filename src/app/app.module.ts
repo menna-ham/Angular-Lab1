@@ -11,7 +11,11 @@ import { ChildComponent } from './component interaction/child/child.component';
 import { HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
-import { UsersComponent } from './users/users.component'
+import { UsersComponent } from './users/users.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { DiscountComponent } from './discount/discount.component';
+import { WithoutDiscountComponent } from './without-discount/without-discount.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { UsersComponent } from './users/users.component'
     ChildComponent,
     HomeComponent,
     PostsComponent,
-    UsersComponent
+    UsersComponent,
+    RegisterComponent,
+    LoginComponent,
+    DiscountComponent,
+    WithoutDiscountComponent
   ],
   imports: [
     BrowserModule,

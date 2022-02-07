@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Iproducts, DiscountOffers,ICategory } from '../shared-class&types/Iproducts';
-import{ProductService} from '../services/product-service.service'
+import{ProductService} from '../services/product-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-ang',
@@ -8,7 +9,6 @@ import{ProductService} from '../services/product-service.service'
   styleUrls: ['./product-ang.component.scss']
 })
 export class ProductAngComponent implements OnInit {
-  //public Discount:boolean
   Discount:DiscountOffers;
   StoreName:string;
   StoreLogo:string;
@@ -18,10 +18,8 @@ export class ProductAngComponent implements OnInit {
   Ipurshased:boolean;
   check :boolean;
   allprods: any;
-  //ProductService: ProductService = new ProductService;
 
-  constructor(private ProductService:ProductService) {
-    //this.Discount= true;
+  constructor(private ProductService:ProductService , private rout:Router,  private activatedRoute:ActivatedRoute) {
    this.Discount=DiscountOffers.gDis;
     this.StoreName ='Moana';
     this.StoreLogo ="../../assets/images/logo.jpg";
@@ -67,6 +65,14 @@ export class ProductAngComponent implements OnInit {
 
   renderVals(){
    this.allprods= this.ProductService.GetAllProducts()
+  }
+
+  BtnwDis()
+  {
+    this.rout.navigate(["discount"],{relativeTo:this.activatedRoute});
+  }
+  BtnWoDis(){
+    this.rout.navigate(["without-discount"] ,{relativeTo :this.activatedRoute});
   }
   
 }

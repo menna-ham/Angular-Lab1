@@ -1,0 +1,40 @@
+<div class="container m-5 col-6">
+    <h3 > Registeration Form </h3><br>
+<div>
+<form action="/action_page.php" class="was-validated">
+    <div class="form-group ">
+      <label for="uname">Username:</label>
+      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="Email" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+      <label for="cpwd">Confirm Password:</label>
+      <input type="password" class="form-control" id="cpwd" placeholder="Confirm Password" name="cpswd" required>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+      
+    </div>
+    <div class="form-group">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Where Do You hear About Us?
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Google</a></li>
+            </ul>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Register</button>
+  </form>
+</div>
+</div>
