@@ -1,39 +1,56 @@
 <div class="container m-5 col-6">
     <h3 > Registeration Form </h3><br>
 <div>
-<form action="/action_page.php" class="was-validated">
+ 
+<form novalidate #RegisterForm = "ngForm"  (ngSubmit)="SubmitBtn()">
+  
+
     <div class="form-group ">
-      <label for="uname">Username:</label>
-      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-      <label for="email">Email:</label>
-      <input type="text" class="form-control" id="email" placeholder="Enter Email" name="Email" required>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
+<!--  [A-Za-z]   /^[A-Z].*$/ -->
+      <label for="uname">Username :</label>
+      <input type="text" class="form-control" name="uname" required pattern = "^[a-zA-Z]*" #uname="ngModel" [(ngModel)]="register.username"
+      [class.is-invalid]="uname.invalid && uname.touched">
+      <div *ngIf="uname.errors && uname.touched">
+        <small class="text-danger" *ngIf="uname.errors['required']">Username is Required</small>
+        <small class="text-danger" *ngIf="uname.errors['pattern']">Username Must Contain Only Letters</small>
+       </div>
+
+      <label for="email">Email :</label>
+      <input type="text" class="form-control"  name="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [(ngModel)]="register.email"
+      [class.is-invalid]="email.invalid && email.touched">
+
+      <div *ngIf="email.errors && email.touched">
+        <small class="text-danger" *ngIf="email.errors['required']">Email is Required</small>
+        <small class="text-danger" *ngIf="email.errors['pattern']">Email Must contain @</small>
+       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Password :</label>
+      <input type="password" class="form-control"  name="pswd" required pattern=".{8,}" #pswd="ngModel" [(ngModel)]="register.password"
+      [class.is-invalid]="pswd.invalid && pswd.touched">
+      <div *ngIf="pswd.errors && pswd.touched">
+        <small class="text-danger" *ngIf="pswd.errors['required']">Password is Required</small>
+        <small class="text-danger" *ngIf="pswd.errors['pattern']">Password Must be 8 characters</small>
+       </div>
+
+      <label for="cpwd">Confirm Password :</label>
+      <input type="password" class="form-control"  name="cpswd" required pattern=".{8,}" #cpswd="ngModel" [(ngModel)]="register.ConfirmPassword"
+      [class.is-invalid]="pswd.invalid && pswd.touched">
+      <div *ngIf="cpswd.errors && cpswd.touched">
+        <small class="text-danger" *ngIf="cpswd.errors['required']">Confirm Password is Required</small>
+        <small class="text-danger" *ngIf="cpswd.errors['pattern']">Confirm Password Must be 8 characters </small>
+       </div>
+        
     </div>
     <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
-      <label for="cpwd">Confirm Password:</label>
-      <input type="password" class="form-control" id="cpwd" placeholder="Confirm Password" name="cpswd" required>
-      <div class="valid-feedback">Valid.</div>
-      <div class="invalid-feedback">Please fill out this field.</div>
-      
+      <label for="cpwd">Where Did You Hear About Us :</label><br>
+        <select class="form-select" aria-label="Default select example">
+          <option selected> -----please select option----- </option>
+          <option value="1" *ngFor="let soc of social">{{soc}}</option>
+        </select>
     </div>
-    <div class="form-group">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Where Do You hear About Us?
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Google</a></li>
-            </ul>
-        </div>
-    </div>
+
     <button type="submit" class="btn btn-success">Register</button>
   </form>
 </div>

@@ -1,16 +1,27 @@
 <div class="container m-5 col-6">
-    <h3 > Registeration Form </h3><br>
-<form action="/action_page.php" class="was-validated">
+    <h3 > Login Form </h3><br>
+<form novalidate #loginForm = "ngForm" (ngSubmit)="SubmitBtn()">
+  <br>
+  {{login | json}}
     <div class="form-group">
-        <input type="text" class="form-control" id="email" placeholder="Enter Email" name="Email" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
+        <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel"  name="Email" required  [(ngModel)]="login.email"
+         [class.is-invalid]="email.invalid && email.touched">
+         <div *ngIf="email.errors && email.touched">
+          <small class="text-danger" *ngIf="email.errors['required']">Email is Required</small>
+          <small class="text-danger" *ngIf="email.errors['pattern']">Email Must contain @</small>
+         </div>
+        <!-- {{email.className}} -->
       </div>
       <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
+        <input type="password" class="form-control" pattern=".{8,}" #pswd="ngModel" name="pswd" required  [(ngModel)]="login.password"
+         [class.is-invalid]="pswd.invalid && pswd.touched">
+         <div *ngIf="pswd.errors && pswd.touched">
+          <small class="text-danger" *ngIf="pswd.errors['required']">Password is Required</small>
+          <small class="text-danger" *ngIf="pswd.errors['pattern']">Password Must be 8 characters</small>
+         </div>
+        <!-- {{pswd.className}} -->
+        
       </div>
       <button type="submit" class="btn btn-success">Login</button>
 
