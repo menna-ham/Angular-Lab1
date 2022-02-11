@@ -20,11 +20,18 @@ export class RegisterComponent implements OnInit {
   SubmitBtn()
   {
     console.log(this.register)
+    // this.registerSer.RegisterSer(this.register).subscribe(res=>{
+    //   console.log('Successful login' , res)
+    // },
+    // error=>{
+    //   console.log('Error in Registering',error)
+    // }
+    // )
     this.registerSer.RegisterSer(this.register).subscribe(res=>{
-      console.log('Successful login' , res)
+      console.log('Successful Register',res)
     },
     error=>{
-      console.log('Error in Registering',error)
+      console.log('Error Registering ' ,error)
     }
     )
   }

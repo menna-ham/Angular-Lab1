@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderAngComponent } from './header-ang/header-ang.component';
 import { FooterAngComponent } from './footer-ang/footer-ang.component';
 import { ProductAngComponent } from './product-ang/product-ang.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParentComponent } from './component interaction/parent/parent.component';
 import { ChildComponent } from './component interaction/child/child.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -15,7 +15,10 @@ import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DiscountComponent } from './discount/discount.component';
-import { WithoutDiscountComponent } from './without-discount/without-discount.component'
+import { WithoutDiscountComponent } from './without-discount/without-discount.component';
+import { ReactiveLoginComponent } from './reactive-login/reactive-login.component';
+import { ReactiveRegisterComponent } from './reactive-register/reactive-register.component';
+import { NotesComponent } from "./notes/NotesComponent";
 
 @NgModule({
   declarations: [
@@ -31,13 +34,17 @@ import { WithoutDiscountComponent } from './without-discount/without-discount.co
     RegisterComponent,
     LoginComponent,
     DiscountComponent,
-    WithoutDiscountComponent
+    WithoutDiscountComponent,
+    ReactiveLoginComponent,
+    ReactiveRegisterComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

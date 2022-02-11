@@ -8,7 +8,7 @@
     <div class="form-group ">
 <!--  [A-Za-z]   /^[A-Z].*$/ -->
       <label for="uname">Username :</label>
-      <input type="text" class="form-control" name="uname" required pattern = "^[a-zA-Z]*" #uname="ngModel" [(ngModel)]="register.username"
+      <input type="text" class="form-control" name="uname" required pattern = "^(?=.*[a-z])(?=.*[A-Z]).+$*" #uname="ngModel" [(ngModel)]="register.username"
       [class.is-invalid]="uname.invalid && uname.touched">
       <div *ngIf="uname.errors && uname.touched">
         <small class="text-danger" *ngIf="uname.errors['required']">Username is Required</small>
@@ -51,7 +51,7 @@
         </select>
     </div>
 
-    <button type="submit" class="btn btn-success">Register</button>
+    <button type="submit" class="btn btn-success" >Register</button>
   </form>
 </div>
 </div>
